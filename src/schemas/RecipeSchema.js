@@ -7,7 +7,8 @@ RecipeSchema.schema = {
   properties: {
     id:    {type: 'string', default: `${new Date()}-${Math.floor(Math.random() * 1000)}`},
     title: 'string',
-    ingredients: 'data',
-    directions: 'data'
+    ingredients: {type: 'string', default: '[]'},
+    directions: {type: 'string', default: '[]'},
+    gallery: {type: 'string', default: '[]'},
   }
 }
