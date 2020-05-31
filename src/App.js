@@ -1,16 +1,19 @@
 import React from 'react'
-import {
-  View,
-} from 'react-native'
-
-import { List } from './components/List'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 import { RecipeProvider } from './context/RecipeContext'
+import { Home, NewRecipe } from './views'
+
+const Stack = createStackNavigator()
 
 const App = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
-      <List/>
-    </View>
+    <NavigationContainer  >
+      <Stack.Navigator headerMode='none' >
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="New" component={NewRecipe} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 

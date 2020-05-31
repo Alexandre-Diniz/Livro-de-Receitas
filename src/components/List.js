@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { 
   Text,
   FlatList,
@@ -10,7 +10,12 @@ import RecipeContext from '../context/RecipeContext'
 import { getRealm, migration } from '../services/realm'
 
 export const List = () => {
-  const { data, addRecipe } = useContext(RecipeContext)
+  const { data, addRecipe, getAllRecipes } = useContext(RecipeContext)
+
+  useEffect(()=>{
+    
+  }, [])
+
   return (
     <View>
       <Button title='ADD ITEM' onPress={()=>{
@@ -18,7 +23,7 @@ export const List = () => {
           realm.write(()=>{
             let ref = realm.create('Recipe',{
               id: `${new Date()}-${Math.floor(Math.random() * 1000)}`,
-              title: `alexandre-${new Date()}`,
+              title: `alexandre`,
               ingredients: '',
               directions: ''
             })
@@ -28,7 +33,14 @@ export const List = () => {
       <Button title='SHOW ITEM' onPress={()=>{
         getRealm().then(realm=>{
           const data = realm.objects('Recipe')
-          console.log('data:', data[0])
+          getAllRecipes(data)
+        })
+      }} />
+      <Button title='DELETE ALL' onPress={()=>{
+        getRealm().then(realm=>{
+          realm.write(()=>{
+            realm.deleteAll()
+          })
         })
       }} />
       <Button title='CLOSE' onPress={()=>{

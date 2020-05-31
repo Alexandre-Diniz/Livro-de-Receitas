@@ -5,16 +5,17 @@ const RecipeContext = createContext()
 export const RecipeProvider = ({ children }) => {
   const [data, setData] = useState([])
 
-  useEffect(() => {
-    console.log(data)
-  }, [data]);
+  const getAllRecipes = (data) => {
+    setData(data)
+    console.log('data aqui: ', data)
+  }
 
   const addRecipe = (recipe) => {
     console.log(recipe)
     setData([...data, recipe])
   }
 
-  return <RecipeContext.Provider value={{ data, addRecipe }} >
+  return <RecipeContext.Provider value={{ data, addRecipe, getAllRecipes }} >
     { children }
   </RecipeContext.Provider>
 }
