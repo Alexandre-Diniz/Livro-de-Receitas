@@ -1,8 +1,10 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+
 import { RecipeProvider } from './context/RecipeContext'
-import { Home, NewRecipe } from './views'
+import { Home, NewRecipe, AppLoading } from './views'
+
 
 const Stack = createStackNavigator()
 

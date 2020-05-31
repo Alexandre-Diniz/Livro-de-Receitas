@@ -79,6 +79,8 @@ target 'LivroDeReceitas' do
 
   pod 'RealmJS', :path => '../node_modules/realm'
 
+  pod 'RNCustomFonts', :path => '../node_modules/react-native-custom-fonts'
+
   target 'LivroDeReceitasTests' do
     inherit! :complete
     # Pods for testing
